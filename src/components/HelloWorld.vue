@@ -201,7 +201,7 @@ document.addEventListener('keydown', (e) => {
     </div>
 
     <div class="flex w-screen">
-      <div class="flex justify-center w-full sm:mx-24 md:mx-36 lg:mx-48">
+      <div class="flex justify-center w-full sm:mx-24 md:mx-36 lg:mx-48 xl:mx-72">
         <div class="flex flex-col mx-5 flex-grow items-center">
           <div
             @click="showInfo = !showInfo"
@@ -262,7 +262,7 @@ document.addEventListener('keydown', (e) => {
             <iframe
               src="https://calendar.google.com/calendar/embed?src=kdenisb@gmail.com&ctz=Asia/Yekaterinburg"
               loading="lazy"
-              class="mt-2 h-96 xs:w-64"
+              class="mt-2 h-96 xs:w-48"
             ></iframe>
           </div>
         </div>
