@@ -206,7 +206,7 @@ document.addEventListener('keydown', (e) => {
           <div
             @click="showInfo = !showInfo"
             class="flex p-2 sticky top-16 mx-8 my-4 w-full text-lg rounded-lg hover:bg-indigo-200 shadow cursor-pointer bg-indigo-100 text-indigo-700"
-          >&#129496; Контакты и информация</div>
+          >&#128582; Контакты и информация</div>
 
           <div
             v-if="showInfo"
@@ -219,7 +219,7 @@ document.addEventListener('keydown', (e) => {
               target="__blank"
               class="flex w-full hover:bg-indigo-50 m-2 p-1 rounded-lg flex-row items-center"
             >
-              <div class="mr-2 text-blue-900 ">&#10145; {{ link.label }}</div>
+              <div class="mr-2 text-blue-900">&#10145; {{ link.label }}</div>
               <span class="text-2xl text-green-600" v-html="getRandomArrow()" />
             </a>
           </div>
@@ -259,11 +259,13 @@ document.addEventListener('keydown', (e) => {
             v-show="showCalendar"
             class="h-96 bg-white flex flex-col w-full mx-8 my-4 p-2 rounded-lg shadow"
           >
-            <iframe
-              src="https://calendar.google.com/calendar/embed?src=kdenisb@gmail.com&ctz=Asia/Yekaterinburg"
-              loading="lazy"
-              class="mt-2 h-96 xs:w-48 sm:w-48"
-            ></iframe>
+            <div class="flex mt-2 h-96 justify-center">
+              <iframe
+                src="https://calendar.google.com/calendar/embed?src=kdenisb@gmail.com&ctz=Asia/Yekaterinburg"
+                loading="lazy"
+                class="flex w-64 xl:w-full md:w-full"
+              ></iframe>
+            </div>
           </div>
         </div>
       </div>
