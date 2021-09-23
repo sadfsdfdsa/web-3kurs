@@ -262,7 +262,7 @@ document.addEventListener('keydown', (e) => {
             <iframe
               src="https://calendar.google.com/calendar/embed?src=kdenisb@gmail.com&ctz=Asia/Yekaterinburg"
               loading="lazy"
-              class="mt-2 h-96 xs:w-48"
+              class="mt-2 h-96 xs:w-48 sm:w-48"
             ></iframe>
           </div>
         </div>
