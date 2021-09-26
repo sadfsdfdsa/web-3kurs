@@ -8,7 +8,7 @@ export default defineConfig({
     vue(),
     VitePWA({
       workbox: {
-        // cleanupOutdatedCaches: true,
+        cleanupOutdatedCaches: true,
         skipWaiting: true,
         clientsClaim: true,
       },
