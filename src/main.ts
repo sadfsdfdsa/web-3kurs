@@ -34,12 +34,5 @@ export const useServiceWorker = (): {
 }
 
 const { appNeedsRefresh, offlineAppReady } = useServiceWorker()
-watch(
-  appNeedsRefresh,
-  async () => {
-    window.location.reload()
-  },
-  { immediate: true }
-)
 
 createApp(App).mount('#app')
