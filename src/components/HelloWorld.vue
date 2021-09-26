@@ -1,80 +1,6 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-
-const parse = `
-Лабораторные http://kdenisb.org/db/labs_bd_v3.pdf 
-Видеопыты c БД (плейлист на youtube) https://www.youtube.com/playlist?list=PLrih0txcjWjE2V1x18HzxMNjaUIPWul4Y 
-
-Лабораторные http://kdenisb.org/ipsis/met_ipsis_lab_2020_v4.docx.pdf 
-apache.log http://kdenisb.org/apache.log 
-Образ диска ВМ minix (torrent-файл) http://kdenisb.org/minix_330_v1_2019.vdi.torrent 
-Образ диска ВМ minix (скачать по http) http://kdenisb.org/minix_330_v1.vdi 
-Видеопыты с Minix (плейлист на youtube) https://www.youtube.com/playlist?list=PLrih0txcjWjHtW6QQiSqhrRQNKuo7IO2L 
-
-Лабораторные http://kdenisb.org/spo/met_spo_labs_v2019.pdf 
-Курсовая http://kdenisb.org/spo/spo_kr_an.pdf 
-apache.log http://kdenisb.org/apache.log 
-Лекции http://kdenisb.org/spo/spo_lect.pdf 
-Презентация http://kdenisb.org/os_prez_93.pdf 
-
-Конспект http://kdenisb.org/lections_2007.pdf 
-Лабораторные minix (torrent-файл) http://kdenisb.org/minix_330_v1_2019.vdi.torrent 
-Образ диска ВМ minix (скачать по http) http://kdenisb.org/minix_330_v1.vdi 
-Файлы для лабы по ФС minix http://kdenisb.org/lab4v1.tar 
-Методичка minix http://kdenisb.org/minixlab_v9.pdf 
-Вопросы к экзамену http://kdenisb.org/os_tic_2017.pdf 
-Видеопыты с Minix (плейлист на youtube) https://www.youtube.com/playlist?list=PLrih0txcjWjHtW6QQiSqhrRQNKuo7IO2L 
-Лаба по ВМ http://kdenisb.org/osLabVm.pdf 
-
-Конспект http://kdenisb.org/mt/mt_lections_2011.pdf 
-Методичка http://kdenisb.org/mt/mt_labs_v_1.pdf 
-Вопросы к экзамену http://kdenisb.org/mt/tic.pdf 
-
-Конспект http://kdenisb.org/tp/proc_yls.pdf 
-Контрольные http://kdenisb.org/tp/cont_tp_all.pdf 
-Курсач http://kdenisb.org/tp/kurs_2016_v1.pdf 
-
-Конспект http://kdenisb.org/pp/par_lect.pdf 
-Контрольные http://kdenisb.org/pp/lab1.pdf 
-Пример1 http://kdenisb.org/pp/sim_posix.c 
-
-Лабы http://kdenisb.org/fp/fp_labs_v_1.pdf 
-Вопросы к экзамену http://kdenisb.org/fp/tic_fp.pdf 
-Лекции http://kdenisb.org/fp/fp_lec.pdf 
-Презентация http://kdenisb.org/fp/prez-2.97.pdf 
-
-Презентация http://kdenisb.org/xhtml_prez-1.92.pdf 
-Задания курсам http://kdenisb.org/web_tasks_201409.zip 
-Задание очникам ПИ http://kdenisb.org/web/task_complex.pdf 
-Задание очникам БИ http://kdenisb.org/web/task_complex_b.pdf 
-Презентация и примеры JS http://kdenisb.org/js_prez.zip 
-on-line курс https://openedu.ru/course/ITMOUniversity/WEBDEV/ 
-Видеоопыты https://www.youtube.com/playlist?list=PLrih0txcjWjEvC_IRchopcVbFmbx2e5rS 
-Примеры по LESS http://kdenisb.org/less.zip 
-Лабораторная 1 МК http://kdenisb.org/web/lab1_v1.pdf 
-Лабораторные магистрам http://kdenisb.org/web/lab1-9_v9-mg1.pdf 
-Лабораторная JavaScript (бакалаврам) http://kdenisb.org/web/lab3_bak_js_v1.pdf 
-Лабораторная React (бакалаврам) http://kdenisb.org/web/lab4_bak_react_v1.pdf 
-
-Презентация http://kdenisb.org/webprj-0.3.pdf 
-on-line курс https://openedu.ru/course/ITMOUniversity/WEBDEV/ 
-Задание на проектирование http://kdenisb.org/web/TZ_items_v2021.pdf 
-Лабораторная CMS http://kdenisb.org/web/lab_cms_v1.pdf 
-Пример прототипа http://kdenisb.org/prjprot.pdf 
-Видеоопыты https://www.youtube.com/playlist?list=PLrih0txcjWjEvC_IRchopcVbFmbx2e5rS
-
-Презентация http://kdenisb.org/secur/prez_v9.6.pdf 
-Лаба 1 http://kdenisb.org/secur/lab1_v3.pdf 
-Лаба 2 http://kdenisb.org/secur/lab2.pdf 
-Лаба 3 http://kdenisb.org/secur/lab3.pdf 
-Лаба 5 http://kdenisb.org/secur/lab5_2.pdf 
-Видеоопыты https://www.youtube.com/playlist?list=PLrih0txcjWjHHR6Brcyd5Dn3HPSDoXTVh
-
-Программа http://kdenisb.org/preddip_13.doc 
-Документы http://kdenisb.org/pred_docs.zip
-`
-
-const stringArray: Array<string> = parse.split('\n\n')
+import { ref, Ref } from 'vue'
+import axios from 'axios'
 
 const showCalendar = ref(true)
 const showInfo = ref(true)
@@ -96,76 +22,12 @@ const links: Array<Link> = [
   { href: 'http://vk.com/kdenisb', label: 'VK' },
   { href: 'mailto:kdenisb@gmail.com', label: 'kdenisb@gmail.com' },
 ]
-const subjects: Array<Subject> = [
-  {
-    title: 'БД',
-    links: [
-    ],
-  }, {
-    title: 'ИПСИС',
-    links: [
-    ],
-  }, {
-    title: 'СПО',
-    links: [
-    ],
-  }, {
-    title: 'ОС',
-    links: [
-    ],
-  }, {
-    title: 'Теор. Авт.',
-    links: [
-    ],
-  }, {
-    title: 'Теор. Яз. Прог.',
-    links: [
-    ],
-  }, {
-    title: 'Параллельное',
-    links: [
-    ],
-  }, {
-    title: 'Функциональное и логическое',
-    links: [
-    ],
-  }, {
-    title: 'Веб-программирование',
-    links: [
-    ],
-  }, {
-    title: 'Проектирование Веб-сайтов',
-    links: [
-    ],
-  }, {
-    title: 'Защита ПО',
-    links: [
-    ],
-  }, {
-    title: 'Преддипломное',
-    links: [
-    ],
-  },
-]
+const subjects: Ref<Array<Subject>> = ref([])
 
-
-/**
- * Parsing raw links
- */
-for (let index = 0; index < stringArray.length; index++) {
-  const subArray = stringArray[index].split('\n')
-  for (let j = 0; j < subArray.length; j++) {
-    const element = subArray[j]
-    const splittedElement = element.trim().split(' ')
-    if (splittedElement.length >= 2) {
-      const href = splittedElement[splittedElement.length - 1]
-      const label = splittedElement.slice(0, splittedElement.length - 1).join(' ')
-      subjects[index].links.push({
-        label, href
-      })
-    }
-  }
-}
+const remote = 'https://sleepy-anchorage-96400.herokuapp.com/'
+axios.get(remote).then(r => {
+  subjects.value = r.data
+})
 
 const arrows = ['&#9758;', '&#8669;', '&#8605;', '&#10239;', '&#10155;', '&#8620;', '&#10150;']
 
