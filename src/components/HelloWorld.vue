@@ -17,17 +17,25 @@ type Subject = {
   links: Array<Link>
 }
 
+const remote = 'https://sleepy-anchorage-96400.herokuapp.com/'
+const localStorageKey = 'cacheApplication'
+
+const getSubjectsFromStorage = (): Array<Subject> => {
+  const cache = localStorage.getItem(localStorageKey)
+  return cache ? JSON.parse(cache) : []
+}
+
+axios.get(remote).then(r => {
+  subjects.value = r.data
+  localStorage.setItem(localStorageKey, JSON.stringify(r.data))
+})
+
 const links: Array<Link> = [
   { href: 'https://www.hse.ru/org/persons/504184765', label: 'Кузнецов Денис Павлович ВШЭ' },
   { href: 'http://vk.com/kdenisb', label: 'VK' },
   { href: 'mailto:kdenisb@gmail.com', label: 'kdenisb@gmail.com' },
 ]
-const subjects: Ref<Array<Subject>> = ref([])
-
-const remote = 'https://sleepy-anchorage-96400.herokuapp.com/'
-axios.get(remote).then(r => {
-  subjects.value = r.data
-})
+const subjects: Ref<Array<Subject>> = ref(getSubjectsFromStorage())
 
 const arrows = ['&#9758;', '&#8669;', '&#8605;', '&#10239;', '&#10155;', '&#8620;', '&#10150;']
 
