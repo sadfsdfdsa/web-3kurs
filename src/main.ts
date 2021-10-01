@@ -5,11 +5,8 @@ import './index.css'
 import type { Ref } from 'vue'
 
 import { register } from 'register-service-worker'
-import { ref, watch } from 'vue'
+import { ref } from 'vue'
 
-// https://medium.com/google-developer-experts/workbox-4-implementing-refresh-to-update-version-flow-using-the-workbox-window-module-41284967e79c
-// https://github.com/yyx990803/register-service-worker
-// https://developers.google.com/web/fundamentals/primers/service-workers/high-performance-loading
 export const useServiceWorker = (): {
   appNeedsRefresh: Ref<boolean>
   offlineAppReady: Ref<boolean>

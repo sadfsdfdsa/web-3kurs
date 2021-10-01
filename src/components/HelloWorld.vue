@@ -31,7 +31,7 @@ axios.get(remote).then(r => {
 })
 
 const links: Array<Link> = [
-  { href: 'https://www.hse.ru/org/persons/504184765', label: 'Кузнецов Денис Павлович ВШЭ' },
+  { href: 'https://www.hse.ru/org/persons/103793196', label: 'Кузнецов Денис Борисович ВШЭ' },
   { href: 'http://vk.com/kdenisb', label: 'VK' },
   { href: 'mailto:kdenisb@gmail.com', label: 'kdenisb@gmail.com' },
 ]
@@ -67,7 +67,7 @@ document.addEventListener('keydown', (e) => {
     <div
       class="sticky w-screen top-0 h-16 p-2 bg-white mb-auto flex items-center flex-row justify-between"
     >
-      <div class="text-2xl">Кузнецов Денис Павлович</div>
+      <div class="text-2xl">Кузнецов Денис Борисович</div>
     </div>
 
     <div class="flex w-screen">
