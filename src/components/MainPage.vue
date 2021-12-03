@@ -1,16 +1,12 @@
 <script setup lang="ts">
 import { ref, Ref } from 'vue'
 import axios from 'axios'
+import { links, arrows, subjectIcons } from './constants'
+import type { Link } from './constants'
 
 const showCalendar = ref(true)
 const showInfo = ref(true)
 const showSubjects = ref(true)
-const showModalSearch = ref(false)
-
-type Link = {
-  href: string
-  label: string
-}
 
 type Subject = {
   title: string
@@ -30,36 +26,15 @@ axios.get(remote).then(r => {
   localStorage.setItem(localStorageKey, JSON.stringify(r.data))
 })
 
-const links: Array<Link> = [
-  { href: 'https://www.hse.ru/org/persons/103793196', label: 'Кузнецов Денис Борисович ВШЭ' },
-  { href: 'http://vk.com/kdenisb', label: 'VK' },
-  { href: 'mailto:kdenisb@gmail.com', label: 'kdenisb@gmail.com' },
-]
 const subjects: Ref<Array<Subject>> = ref(getSubjectsFromStorage())
-
-const arrows = ['&#9758;', '&#8669;', '&#8605;', '&#10239;', '&#10155;', '&#8620;', '&#10150;']
 
 const getRandomArrow = (): string => {
   return arrows[Math.floor(Math.random() * arrows.length)]
 }
 
-const subjectIcons = ['&#127891;', '&#128210;', '&#128211;', '&#128212;', '&#128213;', '&#128214;', '&#128215;', '&#128216;', '&#128217;', '&#128220;', '&#127914;']
-
 const getRandomSubjectIcon = (): string => {
   return subjectIcons[Math.floor(Math.random() * subjectIcons.length)]
 }
-
-document.addEventListener('keydown', (e) => {
-  if (e.key === '/' || e.charCode === 47) {
-    showModalSearch.value = true
-    e.preventDefault()
-    return
-  }
-  if (e.key === 'Escape' || e.keyCode === 27) {
-    showModalSearch.value = false
-    e.preventDefault()
-  }
-})
 </script>
 
 <template>
@@ -140,20 +115,5 @@ document.addEventListener('keydown', (e) => {
         </div>
       </div>
     </div>
-    <!-- <div
-      class="fixed z-10 inset-0 overflow-y-auto"
-      aria-labelledby="modal-title"
-      role="dialog"
-      aria-modal="true"
-      v-if="showModalSearch"
-    >
-      <div
-        class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0"
-      >
-        <div class="border shadow-2xl bg-white w-96 h-96">
-          <div>Header</div>
-        </div>
-      </div>
-    </div>-->
   </div>
 </template>
